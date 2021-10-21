@@ -9,28 +9,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>shchoi's TIL</title>
-<meta name="description" content="Better than yesterday.">
+<!-- begin _includes/seo.html --><title>분산처리 - shchoi’s TIL</title>
+<meta name="description" content="분산 및 병렬처리의 필요성">
 
 
   <meta name="author" content="Your Name">
   
+  <meta property="article:author" content="Your Name">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="shchoi's TIL">
-<meta property="og:title" content="shchoi’s TIL">
-<meta property="og:url" content="http://localhost:4000/">
+<meta property="og:title" content="분산처리">
+<meta property="og:url" content="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">
 
 
-  <meta property="og:description" content="Better than yesterday.">
-
-
-
+  <meta property="og:description" content="분산 및 병렬처리의 필요성">
 
 
 
+
+
+
+
+  <meta property="article:published_time" content="2021-10-21T00:00:00+09:00">
 
 
 
@@ -41,7 +45,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">
 
 
 
@@ -92,7 +96,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -246,33 +250,20 @@
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title"></h1>
-    
-    
-
-<h3 class="archive__subtitle">Recent posts</h3>
-
-
-
-
-<div class="entries-list">
-  
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="분산처리">
+    <meta itemprop="description" content="분산 및 병렬처리의 필요성">
+    <meta itemprop="datePublished" content="2021-10-21T00:00:00+09:00">
     
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" rel="permalink">분산처리
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" class="u-url" itemprop="url">분산처리
 </a>
-      
-    </h2>
-    
+          </h1>
+          
 
   <p class="page__meta">
     
@@ -293,17 +284,130 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">분산 및 병렬처리의 필요성
-</p>
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h3 id="분산-및-병렬처리의-필요성">분산 및 병렬처리의 필요성</h3>
+
+<hr />
+
+<p>웹에 있는 모든 웹 서비스를 하나의 시스템에 집어넣는 집중화된 시스템을 갖는다면</p>
+
+<ul>
+  <li>
+    <p>먼 거리에 있는 유저들이 접근할 때 네트워크 병목현상이 일어날 수 있다.</p>
+  </li>
+  <li>
+    <p>동시 접속하는 과정에서 네트워크뿐만 아니라 서비스에 대한 요청이 잘 이뤄지지 않을 수 있다.</p>
+  </li>
+</ul>
+
+<h3 id="분산-시스템을-설계할-때-고려사항">분산 시스템을 설계할 때 고려사항</h3>
+
+<hr />
+
+<ul>
+  <li>
+    <p>Transparency: 투명성</p>
+  </li>
+  <li>
+    <p>Scalability: 확장성</p>
+  </li>
+  <li>
+    <p>Concurrency: 동시성</p>
+  </li>
+  <li>
+    <p>Failure Handling</p>
+  </li>
+</ul>
+
+<ol>
+  <li><strong><em>Transparency(투명성)</em></strong>
+    <ul>
+      <li>컴퓨터 동작의 하부가 복잡하더라도 user입장에서는 single computer system으로 느껴지게 하는 것.</li>
+      <li>어떤 시스템을 통해 접근하더라도 똑같은 인터페이스를 제공해야한다.</li>
+      <li>투명성을 극대화시키면 관리를 위한 management에서 성능적인 overhead가 발생할 수 있다.</li>
+      <li>따라서 사용자에 따라 유리하게 투명성을 제공해야한다. 성능이 떨어질 수 있다.</li>
+    </ul>
+  </li>
+  <li><strong><em>Scalability(확장성)</em></strong>
+    <ul>
+      <li>규모가 커지고 효율성이 증대되는 의미 그리고 반대로, user수가 떨어졌을때 규모를 축소하여 작은 규모로 효율적이게 사용할수 있도록 축소시키는 것도 확장성이라 말할 수 있다.</li>
+    </ul>
+  </li>
+  <li><strong><em>Concurrency(일관성)</em></strong>
+    <ul>
+      <li>동시에 접근할 때, 각 자원들의 상태가 동일해야한다</li>
+    </ul>
+  </li>
+  <li><strong><em>Failure Handling</em></strong>
+    <ul>
+      <li>분산 시스템을 구성하는 일부 컴퓨터들이 고장난다 하더라도 그 시스템이 계속해서 사용자에게 일관성 있는 컴퓨팅 써비스를 제공할 수 있어야 한다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>출처:</p>
+
+<p>https://jihyeong-ji99hy99.tistory.com/102?category=889831</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-10-21T00:00:00+09:00">October 21, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC%20http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B6%2584%25EC%2582%25B0%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B6%2584%25EC%2582%25B0%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B6%2584%25EC%2582%25B0%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/Message-Queue/" class="pagination--pager" title="Message Queue
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
 
   
-    
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -338,13 +442,11 @@
   </article>
 </div>
 
+        
+      </div>
+    </div>
   
-</div>
-
-
-
-
-  </div>
+  
 </div>
     </div>
 

@@ -4,4 +4,10 @@ var store = [{
         "tags": [],
         "url": "/Message-Queue/",
         "teaser": null
+      },{
+        "title": "분산처리",
+        "excerpt":"분산 및 병렬처리의 필요성 웹에 있는 모든 웹 서비스를 하나의 시스템에 집어넣는 집중화된 시스템을 갖는다면 먼 거리에 있는 유저들이 접근할 때 네트워크 병목현상이 일어날 수 있다. 동시 접속하는 과정에서 네트워크뿐만 아니라 서비스에 대한 요청이 잘 이뤄지지 않을 수 있다. 분산 시스템을 설계할 때 고려사항 Transparency: 투명성 Scalability: 확장성 Concurrency: 동시성...","categories": [],
+        "tags": [],
+        "url": "/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/",
+        "teaser": null
       }]

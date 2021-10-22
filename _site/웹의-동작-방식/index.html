@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>분산처리 - shchoi’s TIL</title>
-<meta name="description" content="분산 및 병렬처리의 필요성">
+<!-- begin _includes/seo.html --><title>웹의 동작 방식 - shchoi’s TIL</title>
+<meta name="description" content="웹의 동작 방식">
 
 
   <meta name="author" content="Your Name">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="shchoi's TIL">
-<meta property="og:title" content="분산처리">
-<meta property="og:url" content="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">
+<meta property="og:title" content="웹의 동작 방식">
+<meta property="og:url" content="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/">
 
 
-  <meta property="og:description" content="분산 및 병렬처리의 필요성">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-10-21T00:00:00+09:00">
+  <meta property="og:description" content="웹의 동작 방식">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2021-10-22T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">
+
+<link rel="canonical" href="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/">
 
 
 
@@ -251,16 +251,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="분산처리">
-    <meta itemprop="description" content="분산 및 병렬처리의 필요성">
-    <meta itemprop="datePublished" content="2021-10-21T00:00:00+09:00">
+    <meta itemprop="headline" content="웹의 동작 방식">
+    <meta itemprop="description" content="웹의 동작 방식">
+    <meta itemprop="datePublished" content="2021-10-22T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" class="u-url" itemprop="url">분산처리
+            <a href="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/" class="u-url" itemprop="url">웹의 동작 방식
 </a>
           </h1>
           
@@ -277,7 +277,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -289,70 +289,81 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <h3 id="분산-및-병렬처리의-필요성">분산 및 병렬처리의 필요성</h3>
+        <h1 id="웹의-동작-방식">웹의 동작 방식</h1>
 
-<hr />
-
-<p>웹에 있는 모든 웹 서비스를 하나의 시스템에 집어넣는 집중화된 시스템을 갖는다면</p>
-
-<ul>
-  <li>
-    <p>먼 거리에 있는 유저들이 접근할 때 네트워크 병목현상이 일어날 수 있다.</p>
-  </li>
-  <li>
-    <p>동시 접속하는 과정에서 네트워크뿐만 아니라 서비스에 대한 요청이 잘 이뤄지지 않을 수 있다.</p>
-  </li>
-</ul>
-
-<h3 id="분산-시스템을-설계할-때-고려사항">분산 시스템을 설계할 때 고려사항</h3>
-
-<hr />
-
-<ul>
-  <li>
-    <p>Transparency: 투명성</p>
-  </li>
-  <li>
-    <p>Scalability: 확장성</p>
-  </li>
-  <li>
-    <p>Concurrency: 동시성</p>
-  </li>
-  <li>
-    <p>Failure Handling</p>
-  </li>
-</ul>
+<p>브라우저에 웹 주소를 입력하면</p>
 
 <ol>
-  <li><strong><em>Transparency(투명성)</em></strong>
-    <ul>
-      <li>컴퓨터 동작의 하부가 복잡하더라도 user입장에서는 single computer system으로 느껴지게 하는 것.</li>
-      <li>어떤 시스템을 통해 접근하더라도 똑같은 인터페이스를 제공해야한다.</li>
-      <li>투명성을 극대화시키면 관리를 위한 management에서 성능적인 overhead가 발생할 수 있다.</li>
-      <li>따라서 사용자에 따라 유리하게 투명성을 제공해야한다. 성능이 떨어질 수 있다.</li>
-    </ul>
-  </li>
-  <li><strong><em>Scalability(확장성)</em></strong>
-    <ul>
-      <li>규모가 커지고 효율성이 증대되는 의미 그리고 반대로, user수가 떨어졌을때 규모를 축소하여 작은 규모로 효율적이게 사용할수 있도록 축소시키는 것도 확장성이라 말할 수 있다.</li>
-    </ul>
-  </li>
-  <li><strong><em>Concurrency(일관성)</em></strong>
-    <ul>
-      <li>동시에 접근할 때, 각 자원들의 상태가 동일해야한다</li>
-    </ul>
-  </li>
-  <li><strong><em>Failure Handling</em></strong>
-    <ul>
-      <li>분산 시스템을 구성하는 일부 컴퓨터들이 고장난다 하더라도 그 시스템이 계속해서 사용자에게 일관성 있는 컴퓨팅 써비스를 제공할 수 있어야 한다.</li>
-    </ul>
-  </li>
+  <li>브라우저는 DNS 서버로 가서 웹사이트가 있는 서버의 진짜 주소를 찾는다</li>
+  <li>그 다음 브라우저는 서버에게 웹사이트의 사본을 클라이언트에게 보내달라는 HTTP요청을 서버로 전송한다. 이 때, 클라이언트와 서버 사이에 전송되는 모든 데이터는 TCP/IP 연결을 통해 전송된다</li>
+  <li>요청을 받은 서버는 웹사이트의 파일들을 데이터 패킷이라 불리는 단위로 브라우저에게 전송한다.</li>
+  <li>브라우저는 이 데이터들을 완전한 웹 사이트로 조립하여 보여준다.</li>
 </ol>
 
-<p>출처:</p>
+<h3 id="dnsdomain-name-system-servers">DNS(Domain Name System Servers)</h3>
 
-<p>https://jihyeong-ji99hy99.tistory.com/102?category=889831</p>
+<ul>
+  <li>
+    <p>도메인 웹주소와 웹사이트의 실제 IP주소를 맞춰주는 서버</p>
+  </li>
+  <li>
+    <p>구성 요소 및 동작 원리</p>
 
+    <ul>
+      <li>
+        <p><img src="../img/dns.png" alt="DNS 동작 방식" /></p>
+      </li>
+      <li>
+        <p>DNS 동작과정</p>
+
+        <ol>
+          <li>
+            <p>DNS Query (from Web Browser to Local DNS) : “제가 원하는 웹 사이트의 IP 주소를 알고 계신가요?” Local DNS 서버에게 전달</p>
+          </li>
+          <li>
+            <p>DNS Query (from Local DNS to Root DNS) : “제가 원하는 웹 사이트의 IP 주소를 알고 계신가요?” Root DNS서버에게 전달</p>
+          </li>
+          <li>
+            <p>DNS Response (from Root DNS to Local DNS) : “저는 모르지만 , Com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴 테니 거기에 물어보세요”</p>
+          </li>
+          <li>
+            <p>DNS Query (from Local DNS to com NS) : “ 안녕하세요. www. naver. com의 IP 주소를 알고 계신가요?”</p>
+          </li>
+          <li>
+            <p>DNS Response (from com NS to Local DNS) : “저는 모르지만 , Com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴 테니 거기에 물어보세요”</p>
+          </li>
+          <li>
+            <p>DNS Query (from Local DNS to naver. com NS) : “ 안녕하세요. www. Naver .com의 IP 주소를 알고 계신가요?”</p>
+          </li>
+          <li>
+            <p>DNS Response (from naver .com NS to Local DNS) : “저는 모르지만 해당 웹은 www. g.naver. com이라는 이름으로 통해요. g.naver .com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴테니 거기에 물어보세요”</p>
+          </li>
+          <li>
+            <p>DNS Query (from Local DNS to g.naver. com NS) : “ 안녕하세요. www. g.naver. com의 IP 주소를 알고 계신가요?”</p>
+          </li>
+          <li>
+            <p>DNS Response (from g.naver .com NS to Local DNS) : “ 네 www. g.naver .com의 IP 주소는 222.222.222.22와 333.333.333.33입니다”</p>
+          </li>
+          <li>
+            <p>DNS Response (from Local DNS to Web Browser) : “네 www. naver .com의 IP 주소는 222.222.222.22와 333.333.333.33입니다”</p>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="패킷">패킷</h3>
+
+<ul>
+  <li>데이터가 웹을 거쳐서 전송될 때, 수천 개의 작은 덩어리로 전송된다. 만약 하나의 큰 덩어리로 전송된다면, 한 번에 하나의 사용자만 다운로드 할 수 있을 것이다.</li>
+</ul>
+
+<p>참조:</p>
+
+<p><a href="https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/How_the_Web_works">https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/How_the_Web_works</a></p>
+
+<p><a href="https://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC">https://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC</a></p>
 
         
       </section>
@@ -364,7 +375,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-10-21T00:00:00+09:00">October 21, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-10-22T00:00:00+09:00">October 22, 2021</time></p>
 
       </footer>
 
@@ -373,23 +384,22 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC%20http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B6%2584%25EC%2582%25B0%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EC%9B%B9%EC%9D%98+%EB%8F%99%EC%9E%91+%EB%B0%A9%EC%8B%9D%20http%3A%2F%2Flocalhost%3A4000%2F%25EC%259B%25B9%25EC%259D%2598-%25EB%258F%2599%25EC%259E%2591-%25EB%25B0%25A9%25EC%258B%259D%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B6%2584%25EC%2582%25B0%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F%25EC%259B%25B9%25EC%259D%2598-%25EB%258F%2599%25EC%259E%2591-%25EB%25B0%25A9%25EC%258B%259D%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B6%2584%25EC%2582%25B0%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F%25EC%259B%25B9%25EC%259D%2598-%25EB%258F%2599%25EC%259E%2591-%25EB%25B0%25A9%25EC%258B%259D%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/Message-Queue/" class="pagination--pager" title="Message Queue
+      <a href="/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" class="pagination--pager" title="분산처리
 ">Previous</a>
     
     
-      <a href="/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/" class="pagination--pager" title="웹의 동작 방식
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -413,7 +423,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/" rel="permalink">웹의 동작 방식
+        <a href="/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" rel="permalink">분산처리
 </a>
       
     </h2>
@@ -431,14 +441,14 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">웹의 동작 방식
+    <p class="archive__item-excerpt" itemprop="description">분산 및 병렬처리의 필요성
 </p>
   </article>
 </div>

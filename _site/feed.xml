@@ -1,78 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-22T21:13:06+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">shchoi’s TIL</title><subtitle>Better than yesterday.</subtitle><author><name>Your Name</name></author><entry><title type="html">웹의 동작 방식</title><link href="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/" rel="alternate" type="text/html" title="웹의 동작 방식" /><published>2021-10-22T00:00:00+09:00</published><updated>2021-10-22T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9B%B9%EC%9D%98%20%EB%8F%99%EC%9E%91%20%EB%B0%A9%EC%8B%9D</id><content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/">&lt;h1 id=&quot;웹의-동작-방식&quot;&gt;웹의 동작 방식&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-23T15:58:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">shchoi’s TIL</title><subtitle>Better than yesterday.</subtitle><author><name>Your Name</name></author><entry><title type="html">Pagination Cursor vs offset</title><link href="http://localhost:4000/pagination-cursor-vs-offset/" rel="alternate" type="text/html" title="Pagination Cursor vs offset" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-23T00:00:00+09:00</updated><id>http://localhost:4000/pagination-cursor%20vs%20offset</id><content type="html" xml:base="http://localhost:4000/pagination-cursor-vs-offset/">&lt;h1 id=&quot;cursor-offset-pagination-의-비교&quot;&gt;Cursor, Offset Pagination 의 비교&lt;/h1&gt;
 
-&lt;p&gt;브라우저에 웹 주소를 입력하면&lt;/p&gt;
+&lt;h3 id=&quot;cursor-based-pagination-o1&quot;&gt;Cursor-based pagination: O(1)&lt;/h3&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;브라우저는 DNS 서버로 가서 웹사이트가 있는 서버의 진짜 주소를 찾는다&lt;/li&gt;
-  &lt;li&gt;그 다음 브라우저는 서버에게 웹사이트의 사본을 클라이언트에게 보내달라는 HTTP요청을 서버로 전송한다. 이 때, 클라이언트와 서버 사이에 전송되는 모든 데이터는 TCP/IP 연결을 통해 전송된다&lt;/li&gt;
-  &lt;li&gt;요청을 받은 서버는 웹사이트의 파일들을 데이터 패킷이라 불리는 단위로 브라우저에게 전송한다.&lt;/li&gt;
-  &lt;li&gt;브라우저는 이 데이터들을 완전한 웹 사이트로 조립하여 보여준다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;ul&gt;
+  &lt;li&gt;cursor는 포인터의 역할을 하며 cursor로 아이템의 위치를 찾는다.
+서버는 클라이언트에게 Response와 함께  cursor를 반환하고 
+클라이언트는 요청시 cursor와 함께 요청한다.&lt;/li&gt;
+  &lt;li&gt;real-time data set을 다룰 때 선호되는 방식&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;dnsdomain-name-system-servers&quot;&gt;DNS(Domain Name System Servers)&lt;/h3&gt;
+&lt;h3 id=&quot;offset-based-pagination-on&quot;&gt;Offset-based pagination: O(n)&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;도메인 웹주소와 웹사이트의 실제 IP주소를 맞춰주는 서버&lt;/p&gt;
+    &lt;p&gt;limit(the number of results) 와 offset(the number of records that need to be skipped)을 파라미터로 사용하는 방식&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;구성 요소 및 동작 원리&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;&lt;img src=&quot;../img/dns.png&quot; alt=&quot;DNS 동작 방식&quot; /&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;DNS 동작과정&lt;/p&gt;
-
-        &lt;ol&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Query (from Web Browser to Local DNS) : “제가 원하는 웹 사이트의 IP 주소를 알고 계신가요?” Local DNS 서버에게 전달&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Query (from Local DNS to Root DNS) : “제가 원하는 웹 사이트의 IP 주소를 알고 계신가요?” Root DNS서버에게 전달&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Response (from Root DNS to Local DNS) : “저는 모르지만 , Com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴 테니 거기에 물어보세요”&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Query (from Local DNS to com NS) : “ 안녕하세요. www. naver. com의 IP 주소를 알고 계신가요?”&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Response (from com NS to Local DNS) : “저는 모르지만 , Com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴 테니 거기에 물어보세요”&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Query (from Local DNS to naver. com NS) : “ 안녕하세요. www. Naver .com의 IP 주소를 알고 계신가요?”&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Response (from naver .com NS to Local DNS) : “저는 모르지만 해당 웹은 www. g.naver. com이라는 이름으로 통해요. g.naver .com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴테니 거기에 물어보세요”&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Query (from Local DNS to g.naver. com NS) : “ 안녕하세요. www. g.naver. com의 IP 주소를 알고 계신가요?”&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Response (from g.naver .com NS to Local DNS) : “ 네 www. g.naver .com의 IP 주소는 222.222.222.22와 333.333.333.33입니다”&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;DNS Response (from Local DNS to Web Browser) : “네 www. naver .com의 IP 주소는 222.222.222.22와 333.333.333.33입니다”&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ol&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
+    &lt;p&gt;사용하기 쉽고 static data를 다룰 때 선호되는 방식&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;패킷&quot;&gt;패킷&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;커서-페이지네이션이-오프셋-페이지네이션에-비해-pros-or-cons&quot;&gt;커서 페이지네이션이 오프셋 페이지네이션에 비해 {pros or cons}&lt;/h3&gt;
+
+&lt;h3 id=&quot;pros&quot;&gt;Pros&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;데이터가 웹을 거쳐서 전송될 때, 수천 개의 작은 덩어리로 전송된다. 만약 하나의 큰 덩어리로 전송된다면, 한 번에 하나의 사용자만 다운로드 할 수 있을 것이다.&lt;/li&gt;
+  &lt;li&gt;데이터 스킵이 없다. index처럼 동작하는 offset인자에 비해,  cursor는 특정 레코드를 가리키는 포인터처럼 동작한다.&lt;/li&gt;
+  &lt;li&gt;실시간 데이터에 대해 효율적으로 다룬다. 커서가 정적데이터를 필요로 하지 않기 때문에
+각 페이지를 로딩하는 절차에 영향을 받지않고 쉽게 데이터를 추가하고 삭제할 수 있다.&lt;/li&gt;
+  &lt;li&gt;대용량 데이터에 대해 효율적이다.
+offset은 데이터를 얼마나 스킵할지를 결정하면서 다음 데이터 뿐만 아니라 이전 데이터 전체에 대한 것도 스캔을 해야되기 때문에 offset이 큰 경우 성능상 문제가 될 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;참조:&lt;/p&gt;
+&lt;h3 id=&quot;cons&quot;&gt;Cons&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/How_the_Web_works&quot;&gt;https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/How_the_Web_works&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;sorting에 제약이 있을 수 있다. cursor는 정렬을 위해 unique한 column을 사용한다.
+sort를 구현해야한다면 offset이 나을 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC&quot;&gt;https://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC&lt;/a&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">웹의 동작 방식</summary></entry><entry><title type="html">분산처리</title><link href="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" rel="alternate" type="text/html" title="분산처리" /><published>2021-10-21T00:00:00+09:00</published><updated>2021-10-21T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">&lt;h3 id=&quot;분산-및-병렬처리의-필요성&quot;&gt;분산 및 병렬처리의 필요성&lt;/h3&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The cursor approach is always recommended, as it eliminates the duplicated items and doesn’t skip any item.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Still, the decision to go for the right approach depends entirely upon the use case and the effect pagination will have on the product.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;출처:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://betterprogramming.pub/building-apis-a-comparison-between-cursor-and-offset-pagination-88261e3885f8&quot;&gt;https://betterprogramming.pub/building-apis-a-comparison-between-cursor-and-offset-pagination-88261e3885f8&lt;/a&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">Cursor, Offset Pagination 의 비교</summary></entry><entry><title type="html">웹의 동작 방식</title><link href="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/" rel="alternate" type="text/html" title="웹의 동작 방식" /><published>2021-10-22T00:00:00+09:00</published><updated>2021-10-22T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9B%B9%EC%9D%98%20%EB%8F%99%EC%9E%91%20%EB%B0%A9%EC%8B%9D</id><content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/">&lt;p&gt;ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)</summary></entry><entry><title type="html">분산처리</title><link href="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" rel="alternate" type="text/html" title="분산처리" /><published>2021-10-21T00:00:00+09:00</published><updated>2021-10-21T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">&lt;h3 id=&quot;분산-및-병렬처리의-필요성&quot;&gt;분산 및 병렬처리의 필요성&lt;/h3&gt;
 
 &lt;hr /&gt;
 

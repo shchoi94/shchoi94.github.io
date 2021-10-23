@@ -12,8 +12,14 @@ var store = [{
         "teaser": null
       },{
         "title": "웹의 동작 방식",
-        "excerpt":"웹의 동작 방식 브라우저에 웹 주소를 입력하면 브라우저는 DNS 서버로 가서 웹사이트가 있는 서버의 진짜 주소를 찾는다 그 다음 브라우저는 서버에게 웹사이트의 사본을 클라이언트에게 보내달라는 HTTP요청을 서버로 전송한다. 이 때, 클라이언트와 서버 사이에 전송되는 모든 데이터는 TCP/IP 연결을 통해 전송된다 요청을 받은 서버는 웹사이트의 파일들을 데이터 패킷이라 불리는 단위로 브라우저에게...","categories": [],
+        "excerpt":"ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)  ","categories": [],
         "tags": [],
         "url": "/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/",
+        "teaser": null
+      },{
+        "title": "Pagination Cursor vs offset",
+        "excerpt":"Cursor, Offset Pagination 의 비교 Cursor-based pagination: O(1) cursor는 포인터의 역할을 하며 cursor로 아이템의 위치를 찾는다. 서버는 클라이언트에게 Response와 함께 cursor를 반환하고 클라이언트는 요청시 cursor와 함께 요청한다. real-time data set을 다룰 때 선호되는 방식 Offset-based pagination: O(n) limit(the number of results) 와 offset(the number of records that need to be...","categories": [],
+        "tags": [],
+        "url": "/pagination-cursor-vs-offset/",
         "teaser": null
       }]

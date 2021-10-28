@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Pagination Cursor vs offset - shchoi&#8217;s TIL</title>
-<meta name="description" content="Cursor, Offset Pagination 의 비교">
+<!-- begin _includes/seo.html --><title>Nosql - shchoi&#8217;s TIL</title>
+<meta name="description" content="NoSQL">
 
 
   <meta name="author" content="Your Name">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="shchoi's TIL">
-<meta property="og:title" content="Pagination Cursor vs offset">
-<meta property="og:url" content="http://localhost:4000/pagination-cursor-vs-offset/">
+<meta property="og:title" content="Nosql">
+<meta property="og:url" content="http://localhost:4000/NoSQL/">
 
 
-  <meta property="og:description" content="Cursor, Offset Pagination 의 비교">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-10-23T00:00:00+09:00">
+  <meta property="og:description" content="NoSQL">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2021-10-28T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/pagination-cursor-vs-offset/">
+
+<link rel="canonical" href="http://localhost:4000/NoSQL/">
 
 
 
@@ -251,16 +251,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Pagination Cursor vs offset">
-    <meta itemprop="description" content="Cursor, Offset Pagination 의 비교">
-    <meta itemprop="datePublished" content="2021-10-23T00:00:00+09:00">
+    <meta itemprop="headline" content="Nosql">
+    <meta itemprop="description" content="NoSQL">
+    <meta itemprop="datePublished" content="2021-10-28T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/pagination-cursor-vs-offset/" class="u-url" itemprop="url">Pagination Cursor vs offset
+            <a href="http://localhost:4000/NoSQL/" class="u-url" itemprop="url">Nosql
 </a>
           </h1>
           
@@ -277,7 +277,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          2 minute read
         
       </span>
     
@@ -289,59 +289,104 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <h1 id="cursor-offset-pagination-의-비교">Cursor, Offset Pagination 의 비교</h1>
+        <h1 id="nosql">NoSQL</h1>
 
-<h3 id="cursor-based-pagination-o1">Cursor-based pagination: O(1)</h3>
+<p>Not Only SQL</p>
+
+<p>관계형 데이터베이스가 아닌 다른 형태의 데이터 저장 기술을 의미.</p>
+
+<p>RDBMS와 달리 테이블 간의 관계를 정의하지 않는다.</p>
+
+<p>빅데이터의 등장으로 데이터와 트래픽이 기하급수적으로 증가함에 따라 발생하는</p>
+
+<p>RDBMS의 성능적인 단점을 보완하기 위해 데이터의 일관성은 포기하고</p>
+
+<p>비용을 고려하여 여러 대의 데이터에 분산 저장하는 (수펑적 확장성)scale-out을 목표로 등장하였다.</p>
+
+<hr />
+
+<p>종류</p>
+
+<ol>
+  <li>Key-Value Database
+    <ul>
+      <li>질의 속도가 매우 빠르다.</li>
+      <li>Redis, Riak,  Amazon Dynamo DB</li>
+    </ul>
+  </li>
+  <li>Document Database
+    <ul>
+      <li>Key-Document 형태로 저장(value가 계층적인 형태인 document로 저장)</li>
+      <li>document는 객체의 개념과 유사하다. 하나의 객체를 여러 테이블에 나누어 저장할 필요가 없다는 것을 의미.</li>
+      <li>객체-관계 매핑이 필요하지 않고 객체를 document형태로 바로 저장하기 떄문이다.</li>
+      <li>Key-Value 모델과 동일하게 검색에 최적화되어 있다.</li>
+      <li>쿼리가 SQL과는 다르다.</li>
+      <li>MongoDB, CouthDB</li>
+    </ul>
+  </li>
+  <li>Wide Column Database</li>
+  <li>Graph Database</li>
+</ol>
+
+<hr />
+
+<h3 id="rdbms-vs-nosql">RDBMS vs NoSQL</h3>
+
+<p>NoSQL의 장점</p>
 
 <ul>
-  <li>cursor는 포인터의 역할을 하며 cursor로 아이템의 위치를 찾는다.
-서버는 클라이언트에게 Response와 함께  cursor를 반환하고 
-클라이언트는 요청시 cursor와 함께 요청한다.</li>
-  <li>real-time data set을 다룰 때 선호되는 방식</li>
+  <li>스키마가 없기 떄문에 유연하며 자유로운 데이터 구조를 가진다.</li>
+  <li>언제든 저장된 데이터를 조정하고 새로운 필드를 추가할 수 있다.</li>
+  <li>데이터 분산이 용이하고 성능향상을 위한 scale-up, scale-out 이 가능하다</li>
 </ul>
 
-<h3 id="offset-based-pagination-on">Offset-based pagination: O(n)</h3>
+<p>NoSQL의 단점</p>
 
 <ul>
-  <li>
-    <p>limit(the number of results) 와 offset(the number of records that need to be skipped)을 파라미터로 사용하는 방식</p>
-  </li>
-  <li>
-    <p>사용하기 쉽고 static data를 다룰 때 선호되는 방식</p>
-  </li>
+  <li>데이터 중복이 발생할 수 있고 중복된 데이터가 변경되면 수정을 모든 컬렉션에서 수행해야 한다.</li>
+  <li>스키마가 존재하지 않아 명확한 데이터 구조를 보장하지 않고 데이터 구조 결정이 어려울 수 있다.</li>
 </ul>
 
 <hr />
 
-<h3 id="커서-페이지네이션이-오프셋-페이지네이션에-비해-pros-or-cons">커서 페이지네이션이 오프셋 페이지네이션에 비해 {pros or cons}</h3>
+<h3 id="nosql은-언제-사용하면-좋을까">NoSQL은 언제 사용하면 좋을까</h3>
 
-<h3 id="pros">Pros</h3>
+<p>정확한 데이터 구조를 알 수 없고 데이터가 변경/확장이 될 수 있는 경우</p>
+
+<p>중복데이터 변경시 수정에 대한 단점이 있으므로 update가 많이 이루어지지 않는 시스템</p>
+
+<p>방대한 데이터를 저장해야 해서 db를 scale-out 해야하는 시스템</p>
+
+<blockquote>
+  <p><strong><em>예를 들어 구매 내역이나 게임의 로그 같은 데이터들은 매 초마다 엄청난 양이 생성되지만 한번 저장되고 난 뒤에는 수정될 일이 거의 없다. 이런 데이터들을 저장하는 데 데이터의 일관성을 보장하기 위해 ACID 트랜잭션을 지원할 필요는 없을 것이다. 거기다 생성되는 데이터의 양도 많기 때문에 장비의 성능에도 상당한 영향을 미칠 것이다. NoSQL은 이러한 데이터들을 효율적으로 저장할 수 있다. 여러 대의 장비에 빠른 속도로 저장이 가능하며, 데이터의 양이 누적되더라도 얼마든지 수평적 확장이 가능하기 때문이다.</em></strong></p>
+
+  <p><strong><em>실제로 <a href="https://namu.wiki/w/페이스북">페이스북</a>이나 <a href="https://namu.wiki/w/트위터">트위터</a> 같은 소셜 네트워크 서비스에서는 게시글들을 저장하는 데 NoSQL 데이터베이스를 사용하고 있다.[<a href="https://namu.wiki/w/NoSQL#fn-6">6]</a> 매 초에 수백 기가~수 테라 바이트씩 생성되는 데이터들을 RDBMS를 사용해 저장한다면, 글 작성 버튼을 누른 후 글이 중앙 데이터베이스에 저장되기까지 한참을 기다려야 글을 성공적으로 게시할 수 있을 것이다. 하지만 NoSQL의 분산 데이터베이스를 사용한다면 부하가 분산되기 때문에 우리가 글쓰기 버튼을 누르고 한참을 기다릴 필요가 없게 된다. 또한 각종 <a href="https://namu.wiki/w/검색 엔진">검색 엔진</a>에도 사용되는 것이 NoSQL인데, 웹 페이지 내의 텍스트들을 형태소 단위의 토큰으로 분리하여 토큰과 해당 토큰이 포함된 페이지들의 URL을 맵핑하는 Inverted Index(역 인덱스) 구조를 NoSQL을 통해 구현한다. 이런 기능을 일반적인 RDMBS로 구현했을 경우 검색 창에 단어를 입력했을 때마다 상당한 시간이 소요될 것이다.</em></strong></p>
+
+  <p><strong><em>하지만 데이터의 일관성이 보장되어야 하거나 여러번의 조인 연산이 필요한 데이터라면 NoSQL을 사용하는 것 보다 RDBMS를 사용하는 것이 좋을 것이다. NoSQL은 RDBMS를 대체하기 위한 데이터베이스가 아니라 상호 보완할 수 있는 데이터베이스이며, 따라서 목적에 맞게 사용하는 것이 중요하다.</em></strong></p>
+</blockquote>
+
+<hr />
+
+<h3 id="확장-개념">확장 개념</h3>
+
+<p>데이터베이스 종류를 비교할 때 중요한 확장 개념.</p>
+
+<p>디비 서버의 확장성은 수직적(scale-up), 수평적(scale-out)으로 나뉜다.</p>
 
 <ul>
-  <li>데이터 스킵이 없다. index처럼 동작하는 offset인자에 비해,  cursor는 특정 레코드를 가리키는 포인터처럼 동작한다.</li>
-  <li>실시간 데이터에 대해 효율적으로 다룬다. 커서가 정적데이터를 필요로 하지 않기 때문에
-각 페이지를 로딩하는 절차에 영향을 받지않고 쉽게 데이터를 추가하고 삭제할 수 있다.</li>
-  <li>대용량 데이터에 대해 효율적이다.
-offset은 데이터를 얼마나 스킵할지를 결정하면서 다음 데이터 뿐만 아니라 이전 데이터 전체에 대한 것도 스캔을 해야되기 때문에 offset이 큰 경우 성능상 문제가 될 수 있다.</li>
+  <li>수직적 확장: 단순히 디비서버의 성능을 향상시키는 것</li>
+  <li>수평적 확장: 더 많은 서버가 추가되고 데이터베이스가 전체적으로 분산됨을 의미(하나의 디비에서 작동하지만 여러 호스트에서 작동)</li>
 </ul>
 
-<h3 id="cons">Cons</h3>
-
-<ul>
-  <li>sorting에 제약이 있을 수 있다. cursor는 정렬을 위해 unique한 column을 사용한다.
-sort를 구현해야한다면 offset이 나을 수 있다.</li>
-</ul>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p><strong><em>The cursor approach is always recommended, as it eliminates the duplicated items and doesn’t skip any item.</em></strong></p>
-
-<p><strong><em>Still, the decision to go for the right approach depends entirely upon the use case and the effect pagination will have on the product.</em></strong></p>
+<hr />
 
 <p>출처:</p>
 
-<p><a href="https://betterprogramming.pub/building-apis-a-comparison-between-cursor-and-offset-pagination-88261e3885f8">https://betterprogramming.pub/building-apis-a-comparison-between-cursor-and-offset-pagination-88261e3885f8</a></p>
+<p><a href="https://khj93.tistory.com/entry/Database-RDBMS%EC%99%80-NOSQL-%EC%B0%A8%EC%9D%B4%EC%A0%90">https://khj93.tistory.com/entry/Database-RDBMS%EC%99%80-NOSQL-%EC%B0%A8%EC%9D%B4%EC%A0%90</a></p>
 
+<p><a href="https://gyoogle.dev/blog/computer-science/data-base/SQL%20&amp;%20NOSQL.html">https://gyoogle.dev/blog/computer-science/data-base/SQL%20&amp;%20NOSQL.html</a></p>
+
+<p><a href="https://namu.wiki/w/NoSQL#s-4">https://namu.wiki/w/NoSQL#s-4</a></p>
 
         
       </section>
@@ -353,7 +398,7 @@ sort를 구현해야한다면 offset이 나을 수 있다.</li>
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-10-23T00:00:00+09:00">October 23, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-10-28T00:00:00+09:00">October 28, 2021</time></p>
 
       </footer>
 
@@ -362,23 +407,22 @@ sort를 구현해야한다면 offset이 나을 수 있다.</li>
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Pagination+Cursor+vs+offset%20http%3A%2F%2Flocalhost%3A4000%2Fpagination-cursor-vs-offset%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Nosql%20http%3A%2F%2Flocalhost%3A4000%2FNoSQL%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpagination-cursor-vs-offset%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FNoSQL%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpagination-cursor-vs-offset%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FNoSQL%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/" class="pagination--pager" title="웹의 동작 방식
+      <a href="/pagination-cursor-vs-offset/" class="pagination--pager" title="Pagination Cursor vs offset
 ">Previous</a>
     
     
-      <a href="/NoSQL/" class="pagination--pager" title="Nosql
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -402,7 +446,7 @@ sort를 구현해야한다면 offset이 나을 수 있다.</li>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/NoSQL/" rel="permalink">Nosql
+        <a href="/pagination-cursor-vs-offset/" rel="permalink">Pagination Cursor vs offset
 </a>
       
     </h2>
@@ -420,14 +464,14 @@ sort를 구현해야한다면 offset이 나을 수 있다.</li>
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          less than 1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">NoSQL
+    <p class="archive__item-excerpt" itemprop="description">Cursor, Offset Pagination 의 비교
 </p>
   </article>
 </div>

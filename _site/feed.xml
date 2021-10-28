@@ -1,4 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-23T15:58:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">shchoi’s TIL</title><subtitle>Better than yesterday.</subtitle><author><name>Your Name</name></author><entry><title type="html">Pagination Cursor vs offset</title><link href="http://localhost:4000/pagination-cursor-vs-offset/" rel="alternate" type="text/html" title="Pagination Cursor vs offset" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-23T00:00:00+09:00</updated><id>http://localhost:4000/pagination-cursor%20vs%20offset</id><content type="html" xml:base="http://localhost:4000/pagination-cursor-vs-offset/">&lt;h1 id=&quot;cursor-offset-pagination-의-비교&quot;&gt;Cursor, Offset Pagination 의 비교&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-28T13:39:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">shchoi’s TIL</title><subtitle>Better than yesterday.</subtitle><author><name>Your Name</name></author><entry><title type="html">Nosql</title><link href="http://localhost:4000/NoSQL/" rel="alternate" type="text/html" title="Nosql" /><published>2021-10-28T00:00:00+09:00</published><updated>2021-10-28T00:00:00+09:00</updated><id>http://localhost:4000/NoSQL</id><content type="html" xml:base="http://localhost:4000/NoSQL/">&lt;h1 id=&quot;nosql&quot;&gt;NoSQL&lt;/h1&gt;
+
+&lt;p&gt;Not Only SQL&lt;/p&gt;
+
+&lt;p&gt;관계형 데이터베이스가 아닌 다른 형태의 데이터 저장 기술을 의미.&lt;/p&gt;
+
+&lt;p&gt;RDBMS와 달리 테이블 간의 관계를 정의하지 않는다.&lt;/p&gt;
+
+&lt;p&gt;빅데이터의 등장으로 데이터와 트래픽이 기하급수적으로 증가함에 따라 발생하는&lt;/p&gt;
+
+&lt;p&gt;RDBMS의 성능적인 단점을 보완하기 위해 데이터의 일관성은 포기하고&lt;/p&gt;
+
+&lt;p&gt;비용을 고려하여 여러 대의 데이터에 분산 저장하는 (수펑적 확장성)scale-out을 목표로 등장하였다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;종류&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Key-Value Database
+    &lt;ul&gt;
+      &lt;li&gt;질의 속도가 매우 빠르다.&lt;/li&gt;
+      &lt;li&gt;Redis, Riak,  Amazon Dynamo DB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Document Database
+    &lt;ul&gt;
+      &lt;li&gt;Key-Document 형태로 저장(value가 계층적인 형태인 document로 저장)&lt;/li&gt;
+      &lt;li&gt;document는 객체의 개념과 유사하다. 하나의 객체를 여러 테이블에 나누어 저장할 필요가 없다는 것을 의미.&lt;/li&gt;
+      &lt;li&gt;객체-관계 매핑이 필요하지 않고 객체를 document형태로 바로 저장하기 떄문이다.&lt;/li&gt;
+      &lt;li&gt;Key-Value 모델과 동일하게 검색에 최적화되어 있다.&lt;/li&gt;
+      &lt;li&gt;쿼리가 SQL과는 다르다.&lt;/li&gt;
+      &lt;li&gt;MongoDB, CouthDB&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Wide Column Database&lt;/li&gt;
+  &lt;li&gt;Graph Database&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;rdbms-vs-nosql&quot;&gt;RDBMS vs NoSQL&lt;/h3&gt;
+
+&lt;p&gt;NoSQL의 장점&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;스키마가 없기 떄문에 유연하며 자유로운 데이터 구조를 가진다.&lt;/li&gt;
+  &lt;li&gt;언제든 저장된 데이터를 조정하고 새로운 필드를 추가할 수 있다.&lt;/li&gt;
+  &lt;li&gt;데이터 분산이 용이하고 성능향상을 위한 scale-up, scale-out 이 가능하다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;NoSQL의 단점&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터 중복이 발생할 수 있고 중복된 데이터가 변경되면 수정을 모든 컬렉션에서 수행해야 한다.&lt;/li&gt;
+  &lt;li&gt;스키마가 존재하지 않아 명확한 데이터 구조를 보장하지 않고 데이터 구조 결정이 어려울 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;nosql은-언제-사용하면-좋을까&quot;&gt;NoSQL은 언제 사용하면 좋을까&lt;/h3&gt;
+
+&lt;p&gt;정확한 데이터 구조를 알 수 없고 데이터가 변경/확장이 될 수 있는 경우&lt;/p&gt;
+
+&lt;p&gt;중복데이터 변경시 수정에 대한 단점이 있으므로 update가 많이 이루어지지 않는 시스템&lt;/p&gt;
+
+&lt;p&gt;방대한 데이터를 저장해야 해서 db를 scale-out 해야하는 시스템&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;예를 들어 구매 내역이나 게임의 로그 같은 데이터들은 매 초마다 엄청난 양이 생성되지만 한번 저장되고 난 뒤에는 수정될 일이 거의 없다. 이런 데이터들을 저장하는 데 데이터의 일관성을 보장하기 위해 ACID 트랜잭션을 지원할 필요는 없을 것이다. 거기다 생성되는 데이터의 양도 많기 때문에 장비의 성능에도 상당한 영향을 미칠 것이다. NoSQL은 이러한 데이터들을 효율적으로 저장할 수 있다. 여러 대의 장비에 빠른 속도로 저장이 가능하며, 데이터의 양이 누적되더라도 얼마든지 수평적 확장이 가능하기 때문이다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;실제로 &lt;a href=&quot;https://namu.wiki/w/페이스북&quot;&gt;페이스북&lt;/a&gt;이나 &lt;a href=&quot;https://namu.wiki/w/트위터&quot;&gt;트위터&lt;/a&gt; 같은 소셜 네트워크 서비스에서는 게시글들을 저장하는 데 NoSQL 데이터베이스를 사용하고 있다.[&lt;a href=&quot;https://namu.wiki/w/NoSQL#fn-6&quot;&gt;6]&lt;/a&gt; 매 초에 수백 기가~수 테라 바이트씩 생성되는 데이터들을 RDBMS를 사용해 저장한다면, 글 작성 버튼을 누른 후 글이 중앙 데이터베이스에 저장되기까지 한참을 기다려야 글을 성공적으로 게시할 수 있을 것이다. 하지만 NoSQL의 분산 데이터베이스를 사용한다면 부하가 분산되기 때문에 우리가 글쓰기 버튼을 누르고 한참을 기다릴 필요가 없게 된다. 또한 각종 &lt;a href=&quot;https://namu.wiki/w/검색 엔진&quot;&gt;검색 엔진&lt;/a&gt;에도 사용되는 것이 NoSQL인데, 웹 페이지 내의 텍스트들을 형태소 단위의 토큰으로 분리하여 토큰과 해당 토큰이 포함된 페이지들의 URL을 맵핑하는 Inverted Index(역 인덱스) 구조를 NoSQL을 통해 구현한다. 이런 기능을 일반적인 RDMBS로 구현했을 경우 검색 창에 단어를 입력했을 때마다 상당한 시간이 소요될 것이다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;하지만 데이터의 일관성이 보장되어야 하거나 여러번의 조인 연산이 필요한 데이터라면 NoSQL을 사용하는 것 보다 RDBMS를 사용하는 것이 좋을 것이다. NoSQL은 RDBMS를 대체하기 위한 데이터베이스가 아니라 상호 보완할 수 있는 데이터베이스이며, 따라서 목적에 맞게 사용하는 것이 중요하다.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;확장-개념&quot;&gt;확장 개념&lt;/h3&gt;
+
+&lt;p&gt;데이터베이스 종류를 비교할 때 중요한 확장 개념.&lt;/p&gt;
+
+&lt;p&gt;디비 서버의 확장성은 수직적(scale-up), 수평적(scale-out)으로 나뉜다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;수직적 확장: 단순히 디비서버의 성능을 향상시키는 것&lt;/li&gt;
+  &lt;li&gt;수평적 확장: 더 많은 서버가 추가되고 데이터베이스가 전체적으로 분산됨을 의미(하나의 디비에서 작동하지만 여러 호스트에서 작동)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;출처:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://khj93.tistory.com/entry/Database-RDBMS%EC%99%80-NOSQL-%EC%B0%A8%EC%9D%B4%EC%A0%90&quot;&gt;https://khj93.tistory.com/entry/Database-RDBMS%EC%99%80-NOSQL-%EC%B0%A8%EC%9D%B4%EC%A0%90&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://gyoogle.dev/blog/computer-science/data-base/SQL%20&amp;amp;%20NOSQL.html&quot;&gt;https://gyoogle.dev/blog/computer-science/data-base/SQL%20&amp;amp;%20NOSQL.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://namu.wiki/w/NoSQL#s-4&quot;&gt;https://namu.wiki/w/NoSQL#s-4&lt;/a&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">NoSQL</summary></entry><entry><title type="html">Pagination Cursor vs offset</title><link href="http://localhost:4000/pagination-cursor-vs-offset/" rel="alternate" type="text/html" title="Pagination Cursor vs offset" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-23T00:00:00+09:00</updated><id>http://localhost:4000/pagination-cursor%20vs%20offset</id><content type="html" xml:base="http://localhost:4000/pagination-cursor-vs-offset/">&lt;h1 id=&quot;cursor-offset-pagination-의-비교&quot;&gt;Cursor, Offset Pagination 의 비교&lt;/h1&gt;
 
 &lt;h3 id=&quot;cursor-based-pagination-o1&quot;&gt;Cursor-based pagination: O(1)&lt;/h3&gt;
 
@@ -49,7 +146,81 @@ sort를 구현해야한다면 offset이 나을 수 있다.&lt;/li&gt;
 
 &lt;p&gt;출처:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://betterprogramming.pub/building-apis-a-comparison-between-cursor-and-offset-pagination-88261e3885f8&quot;&gt;https://betterprogramming.pub/building-apis-a-comparison-between-cursor-and-offset-pagination-88261e3885f8&lt;/a&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">Cursor, Offset Pagination 의 비교</summary></entry><entry><title type="html">웹의 동작 방식</title><link href="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/" rel="alternate" type="text/html" title="웹의 동작 방식" /><published>2021-10-22T00:00:00+09:00</published><updated>2021-10-22T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9B%B9%EC%9D%98%20%EB%8F%99%EC%9E%91%20%EB%B0%A9%EC%8B%9D</id><content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/">&lt;p&gt;ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)</summary></entry><entry><title type="html">분산처리</title><link href="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" rel="alternate" type="text/html" title="분산처리" /><published>2021-10-21T00:00:00+09:00</published><updated>2021-10-21T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">&lt;h3 id=&quot;분산-및-병렬처리의-필요성&quot;&gt;분산 및 병렬처리의 필요성&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://betterprogramming.pub/building-apis-a-comparison-between-cursor-and-offset-pagination-88261e3885f8&quot;&gt;https://betterprogramming.pub/building-apis-a-comparison-between-cursor-and-offset-pagination-88261e3885f8&lt;/a&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">Cursor, Offset Pagination 의 비교</summary></entry><entry><title type="html">웹의 동작 방식</title><link href="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/" rel="alternate" type="text/html" title="웹의 동작 방식" /><published>2021-10-22T00:00:00+09:00</published><updated>2021-10-22T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9B%B9%EC%9D%98%20%EB%8F%99%EC%9E%91%20%EB%B0%A9%EC%8B%9D</id><content type="html" xml:base="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/">&lt;h1 id=&quot;웹의-동작-방식&quot;&gt;웹의 동작 방식&lt;/h1&gt;
+
+&lt;p&gt;브라우저에 웹 주소를 입력하면&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;브라우저는 DNS 서버로 가서 웹사이트가 있는 서버의 진짜 주소를 찾는다&lt;/li&gt;
+  &lt;li&gt;그 다음 브라우저는 서버에게 웹사이트의 사본을 클라이언트에게 보내달라는 HTTP요청을 서버로 전송한다. 이 때, 클라이언트와 서버 사이에 전송되는 모든 데이터는 TCP/IP 연결을 통해 전송된다&lt;/li&gt;
+  &lt;li&gt;요청을 받은 서버는 웹사이트의 파일들을 데이터 패킷이라 불리는 단위로 브라우저에게 전송한다.&lt;/li&gt;
+  &lt;li&gt;브라우저는 이 데이터들을 완전한 웹 사이트로 조립하여 보여준다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;dnsdomain-name-system-servers&quot;&gt;DNS(Domain Name System Servers)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;도메인 웹주소와 웹사이트의 실제 IP주소를 맞춰주는 서버&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;구성 요소 및 동작 원리&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;img src=&quot;../img/dns.png&quot; alt=&quot;DNS 동작 방식&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;DNS 동작과정&lt;/p&gt;
+
+        &lt;ol&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Query (from Web Browser to Local DNS) : “제가 원하는 웹 사이트의 IP 주소를 알고 계신가요?” Local DNS 서버에게 전달&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Query (from Local DNS to Root DNS) : “제가 원하는 웹 사이트의 IP 주소를 알고 계신가요?” Root DNS서버에게 전달&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Response (from Root DNS to Local DNS) : “저는 모르지만 , Com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴 테니 거기에 물어보세요”&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Query (from Local DNS to com NS) : “ 안녕하세요. www. naver. com의 IP 주소를 알고 계신가요?”&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Response (from com NS to Local DNS) : “저는 모르지만 , Com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴 테니 거기에 물어보세요”&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Query (from Local DNS to naver. com NS) : “ 안녕하세요. www. Naver .com의 IP 주소를 알고 계신가요?”&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Response (from naver .com NS to Local DNS) : “저는 모르지만 해당 웹은 www. g.naver. com이라는 이름으로 통해요. g.naver .com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴테니 거기에 물어보세요”&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Query (from Local DNS to g.naver. com NS) : “ 안녕하세요. www. g.naver. com의 IP 주소를 알고 계신가요?”&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Response (from g.naver .com NS to Local DNS) : “ 네 www. g.naver .com의 IP 주소는 222.222.222.22와 333.333.333.33입니다”&lt;/p&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;p&gt;DNS Response (from Local DNS to Web Browser) : “네 www. naver .com의 IP 주소는 222.222.222.22와 333.333.333.33입니다”&lt;/p&gt;
+          &lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;패킷&quot;&gt;패킷&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터가 웹을 거쳐서 전송될 때, 수천 개의 작은 덩어리로 전송된다. 만약 하나의 큰 덩어리로 전송된다면, 한 번에 하나의 사용자만 다운로드 할 수 있을 것이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;참조:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/How_the_Web_works&quot;&gt;https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/How_the_Web_works&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC&quot;&gt;https://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC&lt;/a&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">웹의 동작 방식</summary></entry><entry><title type="html">분산처리</title><link href="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/" rel="alternate" type="text/html" title="분산처리" /><published>2021-10-21T00:00:00+09:00</published><updated>2021-10-21T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="http://localhost:4000/%EB%B6%84%EC%82%B0%EC%B2%98%EB%A6%AC/">&lt;h3 id=&quot;분산-및-병렬처리의-필요성&quot;&gt;분산 및 병렬처리의 필요성&lt;/h3&gt;
 
 &lt;hr /&gt;
 

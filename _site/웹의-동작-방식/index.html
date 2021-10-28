@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>웹의 동작 방식 - shchoi’s TIL</title>
-<meta name="description" content="ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)">
+<meta name="description" content="웹의 동작 방식">
 
 
   <meta name="author" content="Your Name">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/%EC%9B%B9%EC%9D%98-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D/">
 
 
-  <meta property="og:description" content="ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)">
+  <meta property="og:description" content="웹의 동작 방식">
 
 
 
@@ -252,7 +252,7 @@
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="웹의 동작 방식">
-    <meta itemprop="description" content="ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)">
+    <meta itemprop="description" content="웹의 동작 방식">
     <meta itemprop="datePublished" content="2021-10-22T00:00:00+09:00">
     
 
@@ -277,7 +277,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -289,7 +289,81 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <p>ㅁhttps://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC)</p>
+        <h1 id="웹의-동작-방식">웹의 동작 방식</h1>
+
+<p>브라우저에 웹 주소를 입력하면</p>
+
+<ol>
+  <li>브라우저는 DNS 서버로 가서 웹사이트가 있는 서버의 진짜 주소를 찾는다</li>
+  <li>그 다음 브라우저는 서버에게 웹사이트의 사본을 클라이언트에게 보내달라는 HTTP요청을 서버로 전송한다. 이 때, 클라이언트와 서버 사이에 전송되는 모든 데이터는 TCP/IP 연결을 통해 전송된다</li>
+  <li>요청을 받은 서버는 웹사이트의 파일들을 데이터 패킷이라 불리는 단위로 브라우저에게 전송한다.</li>
+  <li>브라우저는 이 데이터들을 완전한 웹 사이트로 조립하여 보여준다.</li>
+</ol>
+
+<h3 id="dnsdomain-name-system-servers">DNS(Domain Name System Servers)</h3>
+
+<ul>
+  <li>
+    <p>도메인 웹주소와 웹사이트의 실제 IP주소를 맞춰주는 서버</p>
+  </li>
+  <li>
+    <p>구성 요소 및 동작 원리</p>
+
+    <ul>
+      <li>
+        <p><img src="../img/dns.png" alt="DNS 동작 방식" /></p>
+      </li>
+      <li>
+        <p>DNS 동작과정</p>
+
+        <ol>
+          <li>
+            <p>DNS Query (from Web Browser to Local DNS) : “제가 원하는 웹 사이트의 IP 주소를 알고 계신가요?” Local DNS 서버에게 전달</p>
+          </li>
+          <li>
+            <p>DNS Query (from Local DNS to Root DNS) : “제가 원하는 웹 사이트의 IP 주소를 알고 계신가요?” Root DNS서버에게 전달</p>
+          </li>
+          <li>
+            <p>DNS Response (from Root DNS to Local DNS) : “저는 모르지만 , Com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴 테니 거기에 물어보세요”</p>
+          </li>
+          <li>
+            <p>DNS Query (from Local DNS to com NS) : “ 안녕하세요. www. naver. com의 IP 주소를 알고 계신가요?”</p>
+          </li>
+          <li>
+            <p>DNS Response (from com NS to Local DNS) : “저는 모르지만 , Com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴 테니 거기에 물어보세요”</p>
+          </li>
+          <li>
+            <p>DNS Query (from Local DNS to naver. com NS) : “ 안녕하세요. www. Naver .com의 IP 주소를 알고 계신가요?”</p>
+          </li>
+          <li>
+            <p>DNS Response (from naver .com NS to Local DNS) : “저는 모르지만 해당 웹은 www. g.naver. com이라는 이름으로 통해요. g.naver .com 도메인을 관리하는 네임서버의 이름과 IP 주소를 알려드릴테니 거기에 물어보세요”</p>
+          </li>
+          <li>
+            <p>DNS Query (from Local DNS to g.naver. com NS) : “ 안녕하세요. www. g.naver. com의 IP 주소를 알고 계신가요?”</p>
+          </li>
+          <li>
+            <p>DNS Response (from g.naver .com NS to Local DNS) : “ 네 www. g.naver .com의 IP 주소는 222.222.222.22와 333.333.333.33입니다”</p>
+          </li>
+          <li>
+            <p>DNS Response (from Local DNS to Web Browser) : “네 www. naver .com의 IP 주소는 222.222.222.22와 333.333.333.33입니다”</p>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="패킷">패킷</h3>
+
+<ul>
+  <li>데이터가 웹을 거쳐서 전송될 때, 수천 개의 작은 덩어리로 전송된다. 만약 하나의 큰 덩어리로 전송된다면, 한 번에 하나의 사용자만 다운로드 할 수 있을 것이다.</li>
+</ul>
+
+<p>참조:</p>
+
+<p><a href="https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/How_the_Web_works">https://developer.mozilla.org/ko/docs/Learn/Getting_started_with_the_web/How_the_Web_works</a></p>
+
+<p><a href="https://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC">https://ja-gamma.tistory.com/entry/DNS%EA%B0%9C%EB%85%90%EB%8F%99%EC%9E%91%EC%9B%90%EB%A6%AC</a></p>
 
         
       </section>
@@ -340,6 +414,46 @@
     <div class="page__related">
       <h2 class="page__related-title">You may also enjoy</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/NoSQL/" rel="permalink">Nosql
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">NoSQL
+</p>
+  </article>
+</div>
+
         
           
 

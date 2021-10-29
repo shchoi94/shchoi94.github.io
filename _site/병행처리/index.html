@@ -9,28 +9,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>shchoi's TIL</title>
-<meta name="description" content="Better than yesterday.">
+<!-- begin _includes/seo.html --><title>병행처리 - shchoi’s TIL</title>
+<meta name="description" content="스레드 기반 vs 비동기 기반 병행처리">
 
 
   <meta name="author" content="Your Name">
   
+  <meta property="article:author" content="Your Name">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="shchoi's TIL">
-<meta property="og:title" content="shchoi’s TIL">
-<meta property="og:url" content="http://localhost:4000/">
+<meta property="og:title" content="병행처리">
+<meta property="og:url" content="http://localhost:4000/%EB%B3%91%ED%96%89%EC%B2%98%EB%A6%AC/">
 
 
-  <meta property="og:description" content="Better than yesterday.">
-
-
-
+  <meta property="og:description" content="스레드 기반 vs 비동기 기반 병행처리">
 
 
 
+
+
+
+
+  <meta property="article:published_time" content="2021-10-29T00:00:00+09:00">
 
 
 
@@ -41,11 +45,9 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="http://localhost:4000/%EB%B3%91%ED%96%89%EC%B2%98%EB%A6%AC/">
 
 
-
-  <link rel="next" href="http://localhost:4000/page2/">
 
 
 <script type="application/ld+json">
@@ -94,7 +96,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -248,33 +250,20 @@
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title"></h1>
-    
-    
-
-<h3 class="archive__subtitle">Recent posts</h3>
-
-
-
-
-<div class="entries-list">
-  
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="병행처리">
+    <meta itemprop="description" content="스레드 기반 vs 비동기 기반 병행처리">
+    <meta itemprop="datePublished" content="2021-10-29T00:00:00+09:00">
     
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="/%EB%B3%91%ED%96%89%EC%B2%98%EB%A6%AC/" rel="permalink">병행처리
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/%EB%B3%91%ED%96%89%EC%B2%98%EB%A6%AC/" class="u-url" itemprop="url">병행처리
 </a>
-      
-    </h2>
-    
+          </h1>
+          
 
   <p class="page__meta">
     
@@ -295,17 +284,89 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">스레드 기반 vs 비동기 기반 병행처리
-</p>
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="스레드-기반-vs-비동기-기반-병행처리">스레드 기반 vs 비동기 기반 병행처리</h1>
+
+<p>네트워크 프로그래밍의 특징은 ‘어떠한 일들이 일어나기를 기다림’ 이라는 많은 작업들로 구성되어 있다는 점이다.</p>
+
+<p>따라서 여러 cpu에 작업들을 효율적으로 분배하기 위한 운영체제와의 연계 작업이 필요없다.</p>
+
+<p>스레딩의 여러 cpu와 공유 메모리를 사용하는 방식은 계산 위주 작업 분야에 가장 적합하다.</p>
+
+<p>글 가장 아래 명시한 출처로 하는 서적에서 말하는</p>
+
+<p>I/O 위주 작업에 스레드 기반 병행처리보다 비동기 기반 병행 처리를 적용해야 하는 두 가지 이유는오류,  다음과 같다.</p>
+
+<hr />
+
+<ul>
+  <li>Asyncio는 스레드를 사용하는 선점형 멀티태스킹 보다 안전하다. 단순하지 않은 스레드 기반 애플리케이션에서 발생할 수 있는 오류, 경합 조건, 비결정론적 위험요소가 발생하지 않는다.</li>
+  <li>Asyncio를 통해 동시에 수천 개의 소켓 연결을 간단히 처리할 수 있다. 또한 웹소켓이나 사물인터넷을 위한 MQTT 같은 신기술에서 지원하는 수명이 긴 연결도 처리할 수 있다.</li>
+</ul>
+
+<p>출처:</p>
+
+<p>[Using Asyncio in Python /파이썬 비동기 라이브러리 Asyncio] - 케일럽 해팅(한빛미디어)</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-10-29T00:00:00+09:00">October 29, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%E1%84%87%E1%85%A7%E1%86%BC%E1%84%92%E1%85%A2%E1%86%BC%E1%84%8E%E1%85%A5%E1%84%85%E1%85%B5%20http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B3%2591%25ED%2596%2589%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B3%2591%25ED%2596%2589%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F%25EB%25B3%2591%25ED%2596%2589%25EC%25B2%2598%25EB%25A6%25AC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/NoSQL/" class="pagination--pager" title="Nosql
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
 
   
-    
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -340,12 +401,12 @@
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -380,12 +441,12 @@
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -420,12 +481,12 @@
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -460,49 +521,11 @@
   </article>
 </div>
 
+        
+      </div>
+    </div>
   
-</div>
-
-
-<nav class="pagination">
   
-  <ul>
-    
-    
-    <li><a href="#" class="disabled"><span aria-hidden="true">Previous</span></a></li>
-    
-
-    
-    
-      <li><a href="#" class="disabled current">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-
-    
-    
-
-    
-      <li><a href="/page2/">2</a></li>
-    
-
-    
-    
-      <li><a href="/page2/">Next</a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
 </div>
     </div>
 

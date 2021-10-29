@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-28T13:39:29+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">shchoi’s TIL</title><subtitle>Better than yesterday.</subtitle><author><name>Your Name</name></author><entry><title type="html">Nosql</title><link href="http://localhost:4000/NoSQL/" rel="alternate" type="text/html" title="Nosql" /><published>2021-10-28T00:00:00+09:00</published><updated>2021-10-28T00:00:00+09:00</updated><id>http://localhost:4000/NoSQL</id><content type="html" xml:base="http://localhost:4000/NoSQL/">&lt;h1 id=&quot;nosql&quot;&gt;NoSQL&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-10-29T13:48:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">shchoi’s TIL</title><subtitle>Better than yesterday.</subtitle><author><name>Your Name</name></author><entry><title type="html">병행처리</title><link href="http://localhost:4000/%EB%B3%91%ED%96%89%EC%B2%98%EB%A6%AC/" rel="alternate" type="text/html" title="병행처리" /><published>2021-10-29T00:00:00+09:00</published><updated>2021-10-29T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B3%91%ED%96%89%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="http://localhost:4000/%EB%B3%91%ED%96%89%EC%B2%98%EB%A6%AC/">&lt;h1 id=&quot;스레드-기반-vs-비동기-기반-병행처리&quot;&gt;스레드 기반 vs 비동기 기반 병행처리&lt;/h1&gt;
+
+&lt;p&gt;네트워크 프로그래밍의 특징은 ‘어떠한 일들이 일어나기를 기다림’ 이라는 많은 작업들로 구성되어 있다는 점이다.&lt;/p&gt;
+
+&lt;p&gt;따라서 여러 cpu에 작업들을 효율적으로 분배하기 위한 운영체제와의 연계 작업이 필요없다.&lt;/p&gt;
+
+&lt;p&gt;스레딩의 여러 cpu와 공유 메모리를 사용하는 방식은 계산 위주 작업 분야에 가장 적합하다.&lt;/p&gt;
+
+&lt;p&gt;글 가장 아래 명시한 출처로 하는 서적에서 말하는&lt;/p&gt;
+
+&lt;p&gt;I/O 위주 작업에 스레드 기반 병행처리보다 비동기 기반 병행 처리를 적용해야 하는 두 가지 이유는오류,  다음과 같다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Asyncio는 스레드를 사용하는 선점형 멀티태스킹 보다 안전하다. 단순하지 않은 스레드 기반 애플리케이션에서 발생할 수 있는 오류, 경합 조건, 비결정론적 위험요소가 발생하지 않는다.&lt;/li&gt;
+  &lt;li&gt;Asyncio를 통해 동시에 수천 개의 소켓 연결을 간단히 처리할 수 있다. 또한 웹소켓이나 사물인터넷을 위한 MQTT 같은 신기술에서 지원하는 수명이 긴 연결도 처리할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;출처:&lt;/p&gt;
+
+&lt;p&gt;[Using Asyncio in Python /파이썬 비동기 라이브러리 Asyncio] - 케일럽 해팅(한빛미디어)&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">스레드 기반 vs 비동기 기반 병행처리</summary></entry><entry><title type="html">Nosql</title><link href="http://localhost:4000/NoSQL/" rel="alternate" type="text/html" title="Nosql" /><published>2021-10-28T00:00:00+09:00</published><updated>2021-10-28T00:00:00+09:00</updated><id>http://localhost:4000/NoSQL</id><content type="html" xml:base="http://localhost:4000/NoSQL/">&lt;h1 id=&quot;nosql&quot;&gt;NoSQL&lt;/h1&gt;
 
 &lt;p&gt;Not Only SQL&lt;/p&gt;
 

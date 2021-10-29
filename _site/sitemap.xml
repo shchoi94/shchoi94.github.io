@@ -21,6 +21,13 @@
 <lastmod>2021-10-28T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/%EB%B3%91%ED%96%89%EC%B2%98%EB%A6%AC/</loc>
+<lastmod>2021-10-29T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page2/</loc>
 </url>
 </urlset>
